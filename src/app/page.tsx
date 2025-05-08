@@ -1,14 +1,9 @@
 
 'use client';
 import { useState, MouseEvent } from "react";
-import StickyNote from '@/components/StickyNote';
+import StickyNoteCompo from '@/components/StickyNoteCompo';
+import { StickyNote } from "@/types";
 
-type StickyNote = {
-  id: number;
-  x: number;
-  y: number;
-  text: string;
-};
 
 export default function Home() {
   const [notes, setNotes] = useState<StickyNote[]>([]);
@@ -52,7 +47,7 @@ export default function Home() {
       >
         {/*付箋表示*/}
         {notes.map((note) => (
-          <StickyNote key={note.id} note={note} setNotes={setNotes} />
+          <StickyNoteCompo key={note.id} note={note} setNotes={setNotes} />
         ))}
 
       </div>
