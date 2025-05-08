@@ -42,8 +42,10 @@ export default function Home() {
 
       {/*ホワイトボード*/}
       <div
-      className="mt-10 w-full h-screen bg-white rounded-lg shadow border-gray-300"
+      className="mt-10 w-full flex-l bg-white rounded-lg shadow border-gray-300"
+      style={{height: '800px'}}
       onClick={addStickyNote}
+      onMouseLeave={() => window.dispatchEvent(new window.MouseEvent('mouseup'))}
       >
         {/*付箋表示*/}
         {notes.map((note) => (
