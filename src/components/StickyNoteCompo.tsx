@@ -38,7 +38,6 @@ export default function StickyNoteCompo({ note, setNotes }: StickyNoteProps) {
     <Draggable defaultPosition={{ x: note.x, y: note.y }} onStop={handleStop}>
       <div
         className="absolute bg-yellow-200 w-40 h-32 shadow p-2 rounded-2xl cursor-pointer"
-        style={{ left: note.x, top: note.y }}
         onClick={(e) => e.stopPropagation()}
         onDoubleClick={(e) => {
           e.stopPropagation();
