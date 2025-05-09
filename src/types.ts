@@ -5,3 +5,15 @@ export type StickyNote = {
     text: string;
     color: string;
 };
+
+export type FrameworkType =
+  | "none"
+  | "kj"
+  | "mandara"
+  | "mece"
+  | "swot"
+  | "issueTracking"
+  | "fishbone"
+  | "sipoc"
+  | "kanban"
+  | "eisenhower";
