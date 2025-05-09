@@ -123,7 +123,7 @@ export default function StickyNoteCompo({ note, setNotes }: StickyNoteProps) {
       {showMenu && (
         <div
           className="absolute bg-white border shadow rounded-2xl p-2"
-          style={{ left: menuPosition.x, top: menuPosition.y }}
+          style={{ left: menuPosition.x, top: menuPosition.y, zIndex: 1000 }}
           onClick={(e) => e.stopPropagation()}
         >
           <button
