@@ -77,7 +77,7 @@ export default function ClockTimer() {
           </div>
 
           <button
-            className={`mt-2 px-3 py-1 rounded-2xl ${
+            className={`mt-1 px-3 py-1 rounded-2xl ${
               isTimerRunning
                 ? "bg-red-500 text-white"
                 : "bg-green-500 text-white"
@@ -87,7 +87,7 @@ export default function ClockTimer() {
             {isTimerRunning ? "ストップ" : "スタート"}
           </button>
 
-          <div className="mt-3 flex justify-center gap-2">
+          <div className="mt-1 flex justify-center gap-2">
             <button
               className="px-2 py-1 bg-blue-300 rounded-2xl"
               onClick={() => setFixedTime(10)}
@@ -108,7 +108,7 @@ export default function ClockTimer() {
             </button>
           </div>
 
-          <div className="mt-2">
+          <div className="mt-1">
             <input
               type="number"
               className="border rounded-2xl px-2 py-1 w-20"
@@ -125,7 +125,7 @@ export default function ClockTimer() {
           </div>
         </div>
       )}
-      <div className="text-xs text-gray-500 mt-2">
+      <div className="text-xs text-gray-500 mt-1">
         (右クリックで時計/タイマー切り替え)
       </div>
     </div>

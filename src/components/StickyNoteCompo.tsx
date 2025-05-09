@@ -24,6 +24,10 @@ export default function StickyNoteCompo({ note, setNotes }: StickyNoteProps) {
     }
   }, [isEditing]);
 
+  useEffect(() => {
+    setPosition({x: note.x, y: note.y});
+  }, [note.x, note.y])
+
   //メニューの外をクリックしたら閉じる処理
   useEffect(() => {
     const handleClickOutside = () => setShowMenu(false);
@@ -41,18 +45,26 @@ export default function StickyNoteCompo({ note, setNotes }: StickyNoteProps) {
   const handleMouseDown = (e: React.MouseEvent) => {
     if (isEditing) return; //編集時はドラッグ無効
     dragging.current = true;
+
+    const boardRect = (e.currentTarget.parentElement as HTMLElement).getBoundingClientRect();
+
     offset.current = {
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
+      x: e.clientX - boardRect.left - (boardRect.width * position.x) / 100,
+      y: e.clientY - boardRect.top - (boardRect.height * position.y) / 100,
     };
     e.stopPropagation();
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!dragging.current) return;
+
+    const boardRect = (e.currentTarget.parentElement as HTMLElement).getBoundingClientRect();
+    const updatedXPercent = ((e.clientX - boardRect.left - offset.current.x) / boardRect.width) * 100;
+    const updatedYPercent = ((e.clientY - boardRect.top - offset.current.y) / boardRect.height) * 100;
+
     setPosition({
-      x: e.clientX - offset.current.x,
-      y: e.clientY - offset.current.y,
+      x: updatedXPercent,
+      y: updatedYPercent,
     });
     e.stopPropagation();
   };
@@ -72,7 +84,7 @@ export default function StickyNoteCompo({ note, setNotes }: StickyNoteProps) {
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault();
     setShowMenu(true);
-    setMenuPosition({ x: e.clientX, y: e.clientY });
+    setMenuPosition({ x: e.clientX, y: e.clientY - 180 });
   };
 
   //delete note
@@ -92,7 +104,7 @@ export default function StickyNoteCompo({ note, setNotes }: StickyNoteProps) {
     <>
       <div
         className={`absolute ${note.color} w-40 h-32 shadow p-2 rounded-2xl cursor-move`}
-        style={{ left: position.x, top: position.y }}
+        style={{ left: `${position.x}%`, top: `${position.y}%`, zIndex: 500 }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMounseUp}
