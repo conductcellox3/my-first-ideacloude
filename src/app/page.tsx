@@ -2,6 +2,7 @@
 'use client';
 import { useState, MouseEvent } from "react";
 import StickyNoteCompo from '@/components/StickyNoteCompo';
+import ClockTimer from "@/components/ClockTimer";
 import { StickyNote } from "@/types";
 
 
@@ -31,7 +32,7 @@ export default function Home() {
 
       {/*タイトル*/}
       <h1 className="text-4xl font-bold mb-6">
-        My First Idea Cloude
+        My First Idea Cloud
       </h1>
 
       {/*入力テキストボックス*/}
@@ -40,6 +41,11 @@ export default function Home() {
       placeholder="議論したいテーマを入力…"
       className="w-1/2 p-3 rounded-2xl shadow border text-center border-gray-300"
       />
+
+      {/*時計・タイマー表示*/}
+      <div className="absolute top-2 right-2">
+        <ClockTimer />
+      </div>
 
       {/*ホワイトボード*/}
       <div
