@@ -20,6 +20,7 @@ export default function Home() {
       x: e.clientX - boardRect.left - noteWidth/2,
       y: e.clientY - boardRect.top + noteHight,
       text: '',
+      color: 'bg-yellow-200',
     };
     setNotes((prevNotes) => [...prevNotes, newNote]);
   };
@@ -37,13 +38,12 @@ export default function Home() {
       <input
       type="text"
       placeholder="議論したいテーマを入力…"
-      className="w-1/2 p-3 rounded-2xl shadow border border-gray-300"
+      className="w-1/2 p-3 rounded-2xl shadow border text-center border-gray-300"
       />
 
       {/*ホワイトボード*/}
       <div
-      className="mt-10 w-full flex-l bg-white rounded-lg shadow border-gray-300"
-      style={{height: '800px'}}
+      className="mt-10 w-full h-lvw flex-l bg-white rounded-lg shadow border-gray-300"
       onClick={addStickyNote}
       onMouseLeave={() => window.dispatchEvent(new window.MouseEvent('mouseup'))}
       >
